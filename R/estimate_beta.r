@@ -11,9 +11,7 @@
 #' @import stats
 #' 
 estimate_beta <- function(y, x){
-  data <- data.frame(y, x)
-  model <- lm(y ~ x, data = data)
-  beta <- coef(model)
+  beta <- solve(t(x) %*% x) %*% t(x) %*% y
 
   return(beta)
 }
